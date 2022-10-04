@@ -1,13 +1,19 @@
 <template>
-  <q-page class="flex flex-center">
-    <img alt="Quasar logo" src="~assets/quasar-logo-vertical.svg" style="width: 200px; height: 200px">
+  <q-page class="flex flex-center" padding>
+    <div>
+      <StockItem></StockItem>
+    </div>
   </q-page>
 </template>
 
 <script>
 import { defineComponent } from 'vue'
+import StockItem from '../components/StockItem.vue'
 
 export default defineComponent({
-  name: 'IndexPage'
+  name: 'IndexPage',
+  components: {
+    StockItem
+  },
 })
 </script>

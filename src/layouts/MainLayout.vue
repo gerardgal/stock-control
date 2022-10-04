@@ -13,7 +13,7 @@
 
     <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
-        <!-- Maybe local time -->
+        <!-- TODO: Display local time at top -->
 
         <!-- <q-item-label header>
           Essential Links
@@ -35,15 +35,15 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
+    title: 'Example link 1',
+    caption: 'This is a link',
+    icon: '',
     link: 'https://quasar.dev'
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
+    title: 'Example link 2',
+    caption: 'This is another link',
+    icon: '',
     link: 'https://github.com/quasarframework'
   }
 ]
