@@ -1,26 +1,28 @@
 <template>
-  <q-layout view="lHh Lpr lFf">
-    <q-header class="header" elevated>
+  <q-layout view="hHh Lpr fFf">
+
+    <q-header class="header" :reveal-offset="500" flat>
       <q-toolbar>
-        <q-btn padding="10px" icon="eva-menu" push dense round aria-label="Menu" @click="toggleLeftDrawer" />
 
-        <q-toolbar-title>
-          Menu
-        </q-toolbar-title>
+        <!-- HERE: Check for buttons padding (not looking good on mobile)-->
+        <q-btn padding="10px" flat icon="eva-menu-outline" aria-label="Menu" @click="toggleLeftDrawer" />
+        <q-toolbar-title> Menu </q-toolbar-title>
 
+        <q-btn padding="10px" flat icon="eva-plus-outline" @click="toggleLeftDrawer" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
-      <q-list>
-        <!-- TODO: Display local time at top -->
+    <q-drawer v-model="leftDrawerOpen" show-if-above :width="200" :breakpoint="500" bordered class="drawer-bg">
 
-        <!-- <q-item-label header>
-          Essential Links
-        </q-item-label> -->
+      <q-scroll-area class="fit">
+        <q-list padding class="menu-list">
+          <EssentialLink v-for="link in essentialLinks" :key="link.label" v-bind="link" />
+        </q-list>
+      </q-scroll-area>
 
-        <EssentialLink v-for="link in essentialLinks" :key="link.title" v-bind="link" />
-      </q-list>
+
+
+
     </q-drawer>
 
     <q-page-container>
@@ -35,17 +37,20 @@ import EssentialLink from 'components/EssentialLink.vue'
 
 const linksList = [
   {
-    title: 'Example link 1',
-    caption: 'This is a link',
     icon: '',
+    caption: 'Storage',
     link: 'https://quasar.dev'
   },
   {
-    title: 'Example link 2',
-    caption: 'This is another link',
     icon: '',
+    caption: 'Another Util',
     link: 'https://github.com/quasarframework'
-  }
+  },
+  {
+    icon: '',
+    caption: 'Settings',
+    link: 'https://github.com/quasarframework'
+  },
 ]
 
 export default defineComponent({
@@ -71,7 +76,14 @@ export default defineComponent({
 
 <style>
 .header {
-  height: 65px;
-  padding: 5px;
+  padding: 10px;
+}
+
+.drawer-bg {
+  background-color: #cbe4f7;
+}
+
+.menu-list {
+  border-radius: 0 32px 32px 0;
 }
 </style>
